@@ -1,0 +1,68 @@
+<svg  xmlns="http://www.w3.org/2000/svg">
+    <!-- <symbol id="icon-catalog" width="27" height="18" viewBox="0 0 27 18" fill="none">
+        <rect x="0.5" width="2" height="2" rx="1" fill="#454545"/>
+        <rect x="6.5" width="20" height="2" rx="1" fill="#454545"/>
+        <rect x="0.5" y="8" width="2" height="2" rx="1" fill="#454545"/>
+        <rect x="6.5" y="8" width="20" height="2" rx="1" fill="#454545"/>
+        <rect x="0.5" y="16" width="2" height="2" rx="1" fill="#454545"/>
+        <rect x="6.5" y="16" width="20" height="2" rx="1" fill="#454545"/>
+    </symbol>
+    <symbol id="icon-basket" width="25" height="23" viewBox="0 0 25 23" fill="none">
+        <path d="M9.5 22C10.0523 22 10.5 21.5523 10.5 21C10.5 20.4477 10.0523 20 9.5 20C8.94772 20 8.5 20.4477 8.5 21C8.5 21.5523 8.94772 22 9.5 22Z" stroke="#454545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M19.5 22C20.0523 22 20.5 21.5523 20.5 21C20.5 20.4477 20.0523 20 19.5 20C18.9477 20 18.5 20.4477 18.5 21C18.5 21.5523 18.9477 22 19.5 22Z" stroke="#454545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M1.5 1H5.5L8.18 15.2823C8.27144 15.7734 8.52191 16.2145 8.88755 16.5285C9.25318 16.8424 9.7107 17.0092 10.18 16.9996H19.9C20.3693 17.0092 20.8268 16.8424 21.1925 16.5285C21.5581 16.2145 21.8086 15.7734 21.9 15.2823L23.5 6.3332H6.5" stroke="#454545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="icon-profile" width="22" height="24" viewBox="0 0 22 24" fill="none">
+        <path d="M21 23V20.6667C21 19.429 20.4732 18.242 19.5355 17.3668C18.5979 16.4917 17.3261 16 16 16H6C4.67392 16 3.40215 16.4917 2.46447 17.3668C1.52678 18.242 1 19.429 1 20.6667V23" stroke="#454545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M10.5 11C13.2614 11 15.5 8.76142 15.5 6C15.5 3.23858 13.2614 1 10.5 1C7.73858 1 5.5 3.23858 5.5 6C5.5 8.76142 7.73858 11 10.5 11Z" stroke="#454545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="icon-search" width="18" height="18" viewBox="0 0 18 18" fill="none">
+        <path d="M8.11111 15.2222C12.0385 15.2222 15.2222 12.0385 15.2222 8.11111C15.2222 4.18375 12.0385 1 8.11111 1C4.18375 1 1 4.18375 1 8.11111C1 12.0385 4.18375 15.2222 8.11111 15.2222Z" stroke="#454545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M17 17L13.1333 13.1333" stroke="#454545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="icon-home" width="22" height="24" viewBox="0 0 22 24" fill="none">
+        <rect width="22" height="24" fill="#B6B6B6"/>
+        <g id="UI-kit">
+        <rect id="Rectangle 109" x="-536" y="-1373" width="1442" height="1604" fill="#F8FCFF"/>
+        <g id="inf">
+        <g id="inf_2">
+        <g id="Frame 15">
+        <rect x="-173" y="-150" width="714" height="258" rx="40" />
+        <g id="Frame 14">
+        <rect x="-132.5" y="-43.5" width="633" height="111" rx="9.5" stroke="#091D9E"/>
+        <g id="icon home">
+        <path id="Vector" d="M1 8.7L11 1L21 8.7V20.8C21 21.3835 20.7659 21.9431 20.3491 22.3556C19.9324 22.7682 19.3671 23 18.7778 23H3.22222C2.63285 23 2.06762 22.7682 1.65087 22.3556C1.23413 21.9431 1 21.3835 1 20.8V8.7Z" stroke="#454545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path id="Vector_2" d="M7.5 23V12H13.5V23" stroke="#454545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+        </g>
+        </g>
+        </g>
+        </g>
+        </g>
+    </symbol> -->
+    <symbol id="icon-home" viewBox="0 0 512 512" >
+        <path d="M395.49,450H125.8a15,15,0,0,1-15-15V197a15,15,0,0,1,30,0V420H380.49V197a15,15,0,1,1,30,0V435A15,15,0,0,1,395.49,450Z"/>
+        <path d="M445.11,261.65a15,15,0,0,1-10.61-4.39L260.64,83.4,86.78,257.26a15,15,0,0,1-21.21-21.21L250,51.58a15,15,0,0,1,21.21,0L455.72,236.05a15,15,0,0,1-10.61,25.6Z"/>
+        <path d="M304.15,450h-87a15,15,0,0,1-15-15V305.48a15,15,0,0,1,15-15h87a15,15,0,0,1,15,15V435A15,15,0,0,1,304.15,450Zm-72-30h57V320.48h-57Z"/>
+    </symbol>
+    <symbol id="icon-catalog" viewBox="0 0 256 256" >
+        <rect fill="none" height="256" width="256" />
+        <line fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" x1="88" x2="216" y1="64" y2="64"/>
+        <line fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" x1="88" x2="216" y1="128" y2="128"/>
+        <line fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" x1="88" x2="216" y1="192" y2="192"/>
+        <circle cx="44" cy="64" r="12"/><circle cx="44" cy="128" r="12"/>
+        <circle cx="44" cy="192" r="12"/>
+    </symbol>
+    <symbol id="icon-basket" viewBox="0 0 256 256">
+        <rect fill="none" height="256" width="256"/>
+        <path d="M184,184H69.8L41.9,30.6A8,8,0,0,0,34.1,24H16" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/>
+        <circle cx="80" cy="204" fill="none" r="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/>
+        <circle cx="184" cy="204" fill="none" r="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/>
+        <path d="M62.5,144H188.1a15.9,15.9,0,0,0,15.7-13.1L216,64H48" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/>
+    </symbol>
+    <symbol id="icon-profile" viewBox="0 0 32 32">
+        <path d="M16,16A7,7,0,1,0,9,9,7,7,0,0,0,16,16ZM16,4a5,5,0,1,1-5,5A5,5,0,0,1,16,4Z"/>
+        <path d="M17,18H15A11,11,0,0,0,4,29a1,1,0,0,0,1,1H27a1,1,0,0,0,1-1A11,11,0,0,0,17,18ZM6.06,28A9,9,0,0,1,15,20h2a9,9,0,0,1,8.94,8Z"/>
+    </symbol>
+</svg>
+

@@ -1,0 +1,34 @@
+.menu {
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    gap: 32px;
+  }
+
+  &__link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+  }
+  &__text {
+    margin-top: 4px;
+    font-size: 14px;
+    font-weight: 300;
+    color: #454545;
+  }
+
+  &__icon {
+    color: #454545;
+    font-size: 24px;
+  }
+}
+
+.active {
+  .menu__text {
+    color: #091d9e;
+  }
+  .menu__icon {
+    color: #091d9e;
+  }
+}

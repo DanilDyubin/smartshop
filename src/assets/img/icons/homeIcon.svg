@@ -1,0 +1,20 @@
+<svg width="22" height="24" viewBox="0 0 22 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="22" height="24" fill="#B6B6B6"/>
+<g id="UI-kit">
+<rect id="Rectangle 109" x="-536" y="-1373" width="1442" height="1604" fill="#F8FCFF"/>
+<g id="inf">
+<g id="inf_2">
+<g id="Frame 15">
+<rect x="-173" y="-150" width="714" height="258" rx="40" fill="#E3E9FF"/>
+<g id="Frame 14">
+<rect x="-132.5" y="-43.5" width="633" height="111" rx="9.5" stroke="#091D9E"/>
+<g id="icon home">
+<path id="Vector" d="M1 8.7L11 1L21 8.7V20.8C21 21.3835 20.7659 21.9431 20.3491 22.3556C19.9324 22.7682 19.3671 23 18.7778 23H3.22222C2.63285 23 2.06762 22.7682 1.65087 22.3556C1.23413 21.9431 1 21.3835 1 20.8V8.7Z" stroke="#454545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_2" d="M7.5 23V12H13.5V23" stroke="#454545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+</svg>
