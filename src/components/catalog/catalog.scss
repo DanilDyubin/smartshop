@@ -15,10 +15,16 @@
     color: #0c0c0c;
   }
 
+  &__header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+
   &__filter {
     margin-top: 30px;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     gap: 4px;
     cursor: pointer;
     span {
@@ -26,5 +32,19 @@
       font-weight: 400;
       color: #454545;
     }
+  }
+
+  &__grid {
+    display: flex;
+    gap: 6px;
+    &-icon {
+      font-size: 26px;
+      cursor: pointer;
+      color: #ababab;
+    }
+  }
+
+  .active-grid {
+    color: var(--color-black);
   }
 }

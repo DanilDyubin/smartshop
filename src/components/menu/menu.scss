@@ -24,11 +24,11 @@
   }
 }
 
-.active {
+.active-link {
   .menu__text {
-    color: #091d9e;
+    color: var(--color-main);
   }
   .menu__icon {
-    color: #091d9e;
+    color: var(--color-main);
   }
 }

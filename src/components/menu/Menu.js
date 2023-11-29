@@ -24,7 +24,7 @@ const Menu = () => {
       <li key={i} className="menu__item">
         <a
           href="#"
-          className={activeMenu === name ? 'menu__link active' : 'menu__link'}
+          className={activeMenu === name ? 'menu__link active-link' : 'menu__link'}
           onClick={() => onChangeMenu(name)}>
           {icon}
           <span className="menu__text">{name}</span>
