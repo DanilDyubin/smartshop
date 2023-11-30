@@ -1,3 +1,4 @@
+import { HiOutlineHeart } from 'react-icons/hi';
 import Button from '../button/Button';
 import phone from '../../assets/img/Phone.png';
 import './cart.scss';
@@ -17,7 +18,9 @@ const Cart = () => {
       <span className="cart__price">84 999 ₽</span>
       <div className="cart__bottom">
         <span className="cart__available">В наличии</span>
-        <input type="checkbox" className="cart__checkbox" />
+        <button className="cart__btn btn-reset">
+          <HiOutlineHeart className="cart__btn-icon" />
+        </button>
       </div>
       <Button name="В корзину" />
     </div>

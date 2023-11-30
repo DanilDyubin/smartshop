@@ -1,5 +1,6 @@
 import { HiOutlineSwitchVertical, HiViewGrid, HiViewList } from 'react-icons/hi';
 import Cart from '../cart/Cart';
+import Filters from '../filters/Filters';
 import './catalog.scss';
 
 const Catalog = () => {
@@ -19,17 +20,32 @@ const Catalog = () => {
           </div>
         </div>
         <div className="catalog__content">
-          <div className="catalog__filters"></div>
+          <div className="catalog__filters">
+            <Filters />
+          </div>
           <div className="catalog__carts">
             <ul className="catalog__list list-reset">
               <li className="catalog__list-item">
-                <a href="#" className="catalog__link"></a>
+                <a href="#" className="catalog__link">
+                  <Cart />
+                </a>
+              </li>
+              <li className="catalog__list-item">
+                <a href="#" className="catalog__link">
+                  <Cart />
+                </a>
+              </li>
+              <li className="catalog__list-item">
+                <a href="#" className="catalog__link">
+                  <Cart />
+                </a>
+              </li>
+              <li className="catalog__list-item">
+                <a href="#" className="catalog__link">
+                  <Cart />
+                </a>
               </li>
             </ul>
-            <Cart />
-            {/* <Cart />
-            <Cart />
-            <Cart /> */}
           </div>
         </div>
       </div>

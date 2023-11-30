@@ -44,7 +44,27 @@
     }
   }
 
-  .active-grid {
-    color: var(--color-black);
+  &__content {
+    padding-top: 24px;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
   }
+
+  &__filters {
+    grid-column: 3 span;
+  }
+
+  &__carts {
+    grid-column: 9 span;
+    // grid-template-columns: repeat(12, 1fr);
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.active-grid {
+  color: var(--color-black);
 }
