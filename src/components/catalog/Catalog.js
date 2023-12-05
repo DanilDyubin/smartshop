@@ -26,24 +26,28 @@ const Catalog = () => {
           <div className="catalog__carts">
             <ul className="catalog__list list-reset">
               <li className="catalog__list-item">
-                <a href="#" className="catalog__link">
-                  <Cart />
-                </a>
+                <Cart />
               </li>
               <li className="catalog__list-item">
-                <a href="#" className="catalog__link">
-                  <Cart />
-                </a>
+                <Cart />
               </li>
               <li className="catalog__list-item">
-                <a href="#" className="catalog__link">
-                  <Cart />
-                </a>
+                <Cart />
               </li>
               <li className="catalog__list-item">
-                <a href="#" className="catalog__link">
-                  <Cart />
-                </a>
+                <Cart />
+              </li>
+              <li className="catalog__list-item">
+                <Cart />
+              </li>
+              <li className="catalog__list-item">
+                <Cart />
+              </li>
+              <li className="catalog__list-item">
+                <Cart />
+              </li>
+              <li className="catalog__list-item">
+                <Cart />
               </li>
             </ul>
           </div>
