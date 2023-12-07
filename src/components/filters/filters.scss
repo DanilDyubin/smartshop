@@ -1,4 +1,7 @@
 .filters {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
   padding: 16px;
   border-radius: 8px;
   box-shadow: 1px 1px 20px 0px rgba(0, 0, 0, 0.1);
@@ -11,8 +14,6 @@
   }
 
   &__price {
-    margin-bottom: 20px;
-
     &-inputs {
       position: relative;
       display: flex;
@@ -32,7 +33,6 @@
     &-input {
       width: 50%;
       height: 40px;
-      //   border: 1px solid var(--color-gray-light);
       border: none;
       outline: none;
       background-color: var(--color-purple);
@@ -52,30 +52,4 @@
       }
     }
   }
-
-  &__list {
-    &-item {
-      margin-bottom: 10px;
-    }
-  }
-
-  &__show {
-    display: inline-block;
-    cursor: pointer;
-    color: var(--color-violet);
-    font-size: 14px;
-    font-weight: 400;
-  }
 }
-
-.hide {
-  .filters__list-item:nth-child(n + 4) {
-    display: none;
-  }
-}
-
-// .show {
-//   .filters__list-item:nth-child(n) {
-//     display: none;
-//   }
-// }

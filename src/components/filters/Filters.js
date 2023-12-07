@@ -1,10 +1,13 @@
-import { useState } from 'react';
-import Checkbox from '../UI/checkbox/Checkbox';
+import FiltersList from '../filtersList/FiltersList';
 
 import './filters.scss';
 
+const memory = ['512 ГБ', '256 ГБ', '128 ГБ', '64 ГБ', '32 ГБ'];
+const ram = ['12 ГБ', '8 ГБ', '6 ГБ', '4 ГБ'];
+const brand = ['Apple', 'Samsung', 'Xiaomi', 'Honor'];
+const camera = ['64 МП', '50 МП', '48 МП', '12 МП'];
+
 const Filters = () => {
-  const [show, setShow] = useState(false);
   return (
     <section className="filters">
       <div className="filters__price">
@@ -17,29 +20,19 @@ const Filters = () => {
       </div>
       <div className="filters__block">
         <div className="filters__caption">Встроенная память</div>
-        <ul className={show ? 'filters__list list-reset' : 'filters__list list-reset hide'}>
-          <li className="filters__list-item">
-            <Checkbox id="1" label="512 ГБ" />
-          </li>
-          <li className="filters__list-item">
-            <Checkbox id="2" label="256 ГБ" />
-          </li>
-          <li className="filters__list-item">
-            <Checkbox id="3" label="128 ГБ" />
-          </li>
-          <li className="filters__list-item">
-            <Checkbox id="3" label="128 ГБ" />
-          </li>
-          <li className="filters__list-item">
-            <Checkbox id="3" label="128 ГБ" />
-          </li>
-          <li className="filters__list-item">
-            <Checkbox id="3" label="128 ГБ" />
-          </li>
-        </ul>
-        <p className="filters__show" onClick={() => setShow(!show)}>
-          {show ? 'Скрыть' : 'Еще'}
-        </p>
+        <FiltersList filters={memory} />
+      </div>
+      <div className="filters__block">
+        <div className="filters__caption">Оперативная память</div>
+        <FiltersList filters={ram} />
+      </div>
+      <div className="filters__block">
+        <div className="filters__caption">Бренд</div>
+        <FiltersList filters={brand} />
+      </div>
+      <div className="filters__block">
+        <div className="filters__caption">Основная камера</div>
+        <FiltersList filters={camera} />
       </div>
     </section>
   );
