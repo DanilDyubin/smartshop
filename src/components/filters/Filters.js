@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import FiltersList from '../filtersList/FiltersList';
 
 import './filters.scss';
@@ -7,7 +8,25 @@ const ram = ['12 ГБ', '8 ГБ', '6 ГБ', '4 ГБ'];
 const brand = ['Apple', 'Samsung', 'Xiaomi', 'Honor'];
 const camera = ['64 МП', '50 МП', '48 МП', '12 МП'];
 
-const Filters = () => {
+const Filters = ({ checkboxValue, onClickCheckbox }) => {
+  const [value, setValue] = useState([]);
+
+  useEffect(() => {
+    onClickCheckbox(value);
+  }, [value]);
+
+  const handleChange = (event) => {
+    const { value, checked } = event.target; // получаем инпут на который кликнули и состояние checked (on)
+    if (checked) {
+      setValue((prev) => [...prev, value]); // в массив к предыдущему value добавляем новое
+    } else {
+      setValue((prev) => {
+        return [...prev.filter((filters) => filters !== value)];
+      });
+    }
+  };
+  console.log(value);
+
   return (
     <section className="filters">
       <div className="filters__price">
@@ -20,19 +39,19 @@ const Filters = () => {
       </div>
       <div className="filters__block">
         <div className="filters__caption">Встроенная память</div>
-        <FiltersList filters={memory} />
+        <FiltersList filters={memory} handleChange={handleChange} />
       </div>
       <div className="filters__block">
         <div className="filters__caption">Оперативная память</div>
-        <FiltersList filters={ram} />
+        <FiltersList filters={ram} handleChange={handleChange} />
       </div>
       <div className="filters__block">
         <div className="filters__caption">Бренд</div>
-        <FiltersList filters={brand} />
+        <FiltersList filters={brand} handleChange={handleChange} />
       </div>
       <div className="filters__block">
         <div className="filters__caption">Основная камера</div>
-        <FiltersList filters={camera} />
+        <FiltersList filters={camera} handleChange={handleChange} />
       </div>
     </section>
   );

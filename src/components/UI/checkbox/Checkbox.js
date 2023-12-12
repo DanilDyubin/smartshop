@@ -1,10 +1,10 @@
 import styles from './Checkbox.module.css';
 
-const Checkbox = ({ id, label }) => {
+const Checkbox = ({ id, label, handleChange }) => {
   return (
     <div className={styles.wrapper}>
       <label className={styles['custom-checkbox']}>
-        <input type="checkbox" id={id} name="name" />
+        <input type="checkbox" value={label} onChange={handleChange} />
         <span>{label}</span>
       </label>
     </div>

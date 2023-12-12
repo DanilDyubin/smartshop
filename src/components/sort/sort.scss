@@ -1,0 +1,44 @@
+.sort {
+  &__wrapper {
+    display: flex;
+    align-items: flex-end;
+    gap: 4px;
+    cursor: pointer;
+    span {
+      font-size: 16px;
+      font-weight: 400;
+      color: #454545;
+    }
+  }
+
+  &__popup {
+    position: absolute;
+    background: #ffffff;
+    top: 180px;
+    left: 16px;
+    z-index: 10;
+    border-radius: 8px;
+    box-shadow: 1px 1px 20px 0px rgba(0, 0, 0, 0.1);
+    padding: 10px 0;
+    overflow: hidden;
+
+    &-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    &-item {
+      padding: 5px 22px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 400;
+      color: #454545;
+
+      &.active,
+      &:hover {
+        background: rgba(0, 119, 255, 0.1);
+      }
+    }
+  }
+}
