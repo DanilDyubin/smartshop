@@ -10,24 +10,25 @@ import './catalog.scss';
 const Catalog = () => {
   const [phones, setPhones] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [sort, setSort] = useState('');
+  const [sort, setSort] = useState({ name: 'Сначала популярные', sortProperty: 'id&order=asc' });
   const [checkboxValue, setCheckboxValue] = useState([]);
 
   useEffect(() => {
     setLoading(true);
-    fetch('https://652e6d590b8d8ddac0b15c7e.mockapi.io/phones?memory=' + checkboxValue).then(
+    fetch(`https://652e6d590b8d8ddac0b15c7e.mockapi.io/phones?sortBy=${sort.sortProperty}`).then(
       (res) =>
         res.json().then((arr) => {
           setPhones(arr);
           setLoading(false);
         }),
     );
-  }, [checkboxValue]);
+    window.scrollTo(0, 0);
+  }, [checkboxValue, sort]);
 
   const onClickCheckbox = (checkbox) => {
     setCheckboxValue(checkbox);
   };
-  console.log(checkboxValue);
+  console.log(sort);
 
   return (
     <section className="catalog">
@@ -35,7 +36,7 @@ const Catalog = () => {
         <div className="catalog__subtitle">Каталог</div>
         <h2 className="catalog__title">Смартфоны</h2>
         <div className="catalog__header">
-          <Sort />
+          <Sort sort={sort} onClickSort={(i) => setSort(i)} />
           <div className="catalog__grid">
             <HiViewGrid className="catalog__grid-icon active-grid" />
             <HiViewList className="catalog__grid-icon" />
