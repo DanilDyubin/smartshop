@@ -16,6 +16,35 @@
     font-weight: 400;
     color: #0c0c0c;
   }
+
+  &__content {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 48px;
+    margin-top: 30px;
+  }
+
+  &__left {
+    grid-column: 6 span;
+    // border: 1px solid black;
+  }
+
+  &__right {
+    grid-column: 4 span;
+    padding: 56px 64px;
+    border-radius: 10px;
+    border: 1px solid #ebebeb;
+  }
+
+  &__list {
+    &-item {
+      padding-top: 20px;
+      padding-bottom: 20px;
+      &:not(:last-child) {
+        border-bottom: 0.5px solid #750dc5;
+      }
+    }
+  }
 }
 
 .notactive {

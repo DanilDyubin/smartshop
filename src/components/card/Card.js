@@ -54,7 +54,7 @@ const Card = ({ id, imageUrl1, imageUrl2, imageUrl3, title, price }) => {
       </Link>
       {/* <span className="card__price">{price} ₽</span> */}
       <div className="card__bottom">
-        <span className="card__available">В наличии</span>
+        <span className="card__available available">В наличии</span>
         <button className="card__btn btn-reset">
           <HiOutlineHeart className="card__btn-icon" />
         </button>

@@ -15,20 +15,20 @@
     margin-top: 4px;
     font-size: 14px;
     font-weight: 300;
-    color: #454545;
+    // color: #454545;
   }
 
   &__icon {
-    color: #454545;
+    // color: #454545;
     font-size: 24px;
   }
 }
 
-.active-link {
-  .menu__text {
-    color: var(--color-main);
-  }
-  .menu__icon {
-    color: var(--color-main);
-  }
-}
+// .active-link {
+//   .menu__text {
+//     color: var(--color-main);
+//   }
+//   .menu__icon {
+//     color: var(--color-main);
+//   }
+// }

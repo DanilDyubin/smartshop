@@ -13,7 +13,7 @@ const Filters = ({ checkboxValue, onClickCheckbox }) => {
 
   useEffect(() => {
     onClickCheckbox(value);
-  }, [value]);
+  });
 
   const handleChange = (event) => {
     const { value, checked } = event.target; // получаем инпут на который кликнули и состояние checked (on)
@@ -25,7 +25,17 @@ const Filters = ({ checkboxValue, onClickCheckbox }) => {
       });
     }
   };
-  console.log(value);
+
+  //   const handleChange = (event) => {
+  //     const { checked } = event.target; // получаем инпут на который кликнули и состояние checked (on)
+  //     if (checked) {
+  //       setValue((prev) => [...prev, index]); // в массив к предыдущему value добавляем новое
+  //     } else {
+  //       setValue((prev) => {
+  //         return [...prev.filter((filters) => filters !== index)];
+  //       });
+  //     }
+  //   };
 
   return (
     <section className="filters">
@@ -43,15 +53,15 @@ const Filters = ({ checkboxValue, onClickCheckbox }) => {
       </div>
       <div className="filters__block">
         <div className="filters__caption">Оперативная память</div>
-        <FiltersList filters={ram} handleChange={handleChange} />
+        <FiltersList filters={ram} />
       </div>
       <div className="filters__block">
         <div className="filters__caption">Бренд</div>
-        <FiltersList filters={brand} handleChange={handleChange} />
+        <FiltersList filters={brand} />
       </div>
       <div className="filters__block">
         <div className="filters__caption">Основная камера</div>
-        <FiltersList filters={camera} handleChange={handleChange} />
+        <FiltersList filters={camera} />
       </div>
     </section>
   );

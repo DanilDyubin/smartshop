@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { useState } from 'react';
 import { HiHome, HiViewList, HiShoppingCart, HiUser } from 'react-icons/hi';
 import './menu.scss';
@@ -12,20 +12,25 @@ const Menu = () => {
     { name: 'Профиль', icon: <HiUser className="menu__icon" />, route: '/profile' },
   ];
 
-  const onChangeMenu = (name) => {
-    setActiveMenu(name);
-  };
+  // const onChangeMenu = (name) => {
+  //   setActiveMenu(name);
+  // };
+  // onClick={() => onChangeMenu(name)}
 
   const menu = menuData.map(({ name, icon, route }, i) => {
     return (
       <li key={i} className="menu__item">
-        <Link
+        <NavLink
           to={route}
-          className={activeMenu === name ? 'menu__link active-link' : 'menu__link'}
-          onClick={() => onChangeMenu(name)}>
+          // className={activeMenu === name ? 'menu__link active-link' : 'menu__link'}
+          // style={({ isActive }) => ({
+          //   color: isActive ? 'red' : '',
+          // })}
+          style={({ isActive }) => ({ color: isActive ? '#091d9e' : '#454545' })}
+          className="menu__link">
           {icon}
           <span className="menu__text">{name}</span>
-        </Link>
+        </NavLink>
       </li>
     );
   });

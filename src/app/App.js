@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Header from '../components/header/Header';
 import Catalog from '../pages/Catalog';
@@ -9,6 +10,8 @@ import NotFound from '../pages/NotFound';
 import './App.css';
 
 function App() {
+  const { searchValue, setSearchValue } = useState('');
+
   return (
     <BrowserRouter>
       <div className="App">

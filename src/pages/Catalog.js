@@ -7,28 +7,32 @@ import Skeleton from '../components/Skeleton/Skeleton';
 
 import './catalog.scss';
 
-const Catalog = () => {
+const Catalog = ({ searchValue }) => {
   const [phones, setPhones] = useState([]);
   const [loading, setLoading] = useState(true);
   const [sort, setSort] = useState({ name: 'Сначала популярные', sortProperty: 'id&order=asc' });
   const [checkboxValue, setCheckboxValue] = useState([]);
 
+  const memoryFilter = checkboxValue ? `memoryId=${checkboxValue}` : '';
+  const search = searchValue ? `&search=${searchValue}` : '';
+
   useEffect(() => {
     setLoading(true);
-    fetch(`https://652e6d590b8d8ddac0b15c7e.mockapi.io/phones?sortBy=${sort.sortProperty}`).then(
-      (res) =>
-        res.json().then((arr) => {
-          setPhones(arr);
-          setLoading(false);
-        }),
+    fetch(
+      `https://652e6d590b8d8ddac0b15c7e.mockapi.io/phones?${memoryFilter}&${search}&sortBy=${sort.sortProperty}`,
+    ).then((res) =>
+      res.json().then((arr) => {
+        setPhones(arr);
+        setLoading(false);
+      }),
     );
     window.scrollTo(0, 0);
-  }, [checkboxValue, sort]);
+  }, [checkboxValue, sort, searchValue]);
 
-  const onClickCheckbox = (checkbox) => {
-    setCheckboxValue(checkbox);
-  };
-  console.log(sort);
+  // const onClickCheckbox = (checkbox) => {
+  //   setCheckboxValue(checkbox);
+  // };
+  console.log(checkboxValue);
 
   return (
     <section className="catalog">
@@ -44,7 +48,7 @@ const Catalog = () => {
         </div>
         <div className="catalog__content">
           <div className="catalog__filters">
-            <Filters checkboxValue={checkboxValue} onClickCheckbox={onClickCheckbox} />
+            <Filters checkboxValue={checkboxValue} onClickCheckbox={(i) => setCheckboxValue(i)} />
           </div>
           <div className="catalog__carts">
             <ul className="catalog__list list-reset">
