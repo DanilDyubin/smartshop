@@ -1,25 +1,32 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { HiViewGrid, HiViewList } from 'react-icons/hi';
 import Card from '../components/card/Card';
 import Sort from '../components/sort/Sort';
 import Filters from '../components/filters/Filters';
 import Skeleton from '../components/Skeleton/Skeleton';
+import { SearchContext } from '../app/App';
+
+import Pagination from '../components/pagination/Pagination';
 
 import './catalog.scss';
 
-const Catalog = ({ searchValue }) => {
+const Catalog = () => {
   const [phones, setPhones] = useState([]);
   const [loading, setLoading] = useState(true);
   const [sort, setSort] = useState({ name: 'Сначала популярные', sortProperty: 'id&order=asc' });
   const [checkboxValue, setCheckboxValue] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1); // т/к бэк не отдает массив телефонов и мы не можем на пагинации посчитать сколько будет страниц, придется кол-во страниц захардкодить
+  const { searchValue } = useContext(SearchContext);
 
-  const memoryFilter = checkboxValue ? `memoryId=${checkboxValue}` : '';
+  const memoryFilter = checkboxValue > 0 ? `&memoryId=${checkboxValue}` : '';
   const search = searchValue ? `&search=${searchValue}` : '';
+
+  console.log(checkboxValue);
 
   useEffect(() => {
     setLoading(true);
     fetch(
-      `https://652e6d590b8d8ddac0b15c7e.mockapi.io/phones?${memoryFilter}&${search}&sortBy=${sort.sortProperty}`,
+      `https://652e6d590b8d8ddac0b15c7e.mockapi.io/phones?page=${currentPage}&limit=8&${memoryFilter}&sortBy=${sort.sortProperty}${search}`,
     ).then((res) =>
       res.json().then((arr) => {
         setPhones(arr);
@@ -27,12 +34,11 @@ const Catalog = ({ searchValue }) => {
       }),
     );
     window.scrollTo(0, 0);
-  }, [checkboxValue, sort, searchValue]);
+  }, [checkboxValue, sort, searchValue, currentPage]);
 
   // const onClickCheckbox = (checkbox) => {
   //   setCheckboxValue(checkbox);
   // };
-  console.log(checkboxValue);
 
   return (
     <section className="catalog">
@@ -51,7 +57,7 @@ const Catalog = ({ searchValue }) => {
             <Filters checkboxValue={checkboxValue} onClickCheckbox={(i) => setCheckboxValue(i)} />
           </div>
           <div className="catalog__carts">
-            <ul className="catalog__list list-reset">
+            <ul className="catalog__list">
               {loading
                 ? [...new Array(8)].map((_, i) => <Skeleton key={i} />)
                 : phones.map((items) => {
@@ -63,6 +69,12 @@ const Catalog = ({ searchValue }) => {
                     );
                   })}
             </ul>
+            <div className="catalog__pagination">
+              <Pagination
+                currentPage={currentPage}
+                onChangePage={(number) => setCurrentPage(number)}
+              />
+            </div>
           </div>
         </div>
       </div>
