@@ -22,14 +22,26 @@
     grid-template-columns: repeat(12, 1fr);
     grid-auto-rows: minmax(100px, auto);
     gap: 48px;
+    padding-left: 200px;
     margin-top: 30px;
   }
 
   &__left {
     grid-column: 6 span;
-    // grid-column-start: 2;
-    // grid-column-end: 7;
-    // border: 1px solid black;
+
+    &-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+      gap: 4px;
+      font-size: 16px;
+      color: #c1c1c1;
+      cursor: pointer;
+
+      &:hover {
+        color: var(--color-black);
+      }
+    }
   }
 
   &__list {
@@ -44,6 +56,7 @@
 
   &__right {
     grid-column: 4 span;
+    height: 600px;
     padding: 46px 54px;
     border-radius: 10px;
     border: 1px solid #ebebeb;

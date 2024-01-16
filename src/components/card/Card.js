@@ -2,6 +2,8 @@ import { HiOutlineHeart } from 'react-icons/hi';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper/modules';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { addItem } from '../../redux/slices/cartSlice';
 
 import Button from '../button/Button';
 // import phone1 from '../../assets/img/phones/iphone14/iphone14-1.webp';
@@ -13,6 +15,18 @@ import 'swiper/scss';
 import 'swiper/scss/pagination';
 
 const Card = ({ id, imageUrl1, imageUrl2, imageUrl3, title, price }) => {
+  const dispatch = useDispatch();
+
+  const onClickAdd = () => {
+    const item = {
+      id,
+      imageUrl2,
+      title,
+      price,
+    };
+    dispatch(addItem(item));
+  };
+
   return (
     <div className="card">
       <Swiper
@@ -59,7 +73,7 @@ const Card = ({ id, imageUrl1, imageUrl2, imageUrl3, title, price }) => {
           <HiOutlineHeart className="card__btn-icon" />
         </button>
       </div>
-      <Button name="В корзину" />
+      <Button name="В корзину" onClick={onClickAdd} />
     </div>
   );
 };

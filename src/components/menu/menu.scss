@@ -6,6 +6,7 @@
   }
 
   &__link {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -15,12 +16,26 @@
     margin-top: 4px;
     font-size: 14px;
     font-weight: 300;
-    // color: #454545;
   }
 
   &__icon {
-    // color: #454545;
     font-size: 24px;
+  }
+
+  &__products {
+    position: absolute;
+    left: 50%;
+    top: -6px;
+    width: 16px;
+    height: 16px;
+    color: var(--color-white);
+    background-color: var(--color-violet);
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 400;
   }
 }
 

@@ -8,4 +8,10 @@
   font-size: 14px;
   font-weight: 500;
   color: #f6f6f6;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.button:active {
+  transform: scale(0.95);
 }

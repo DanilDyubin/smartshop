@@ -1,14 +1,21 @@
 import { NavLink } from 'react-router-dom';
-import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { HiHome, HiViewList, HiShoppingCart, HiUser } from 'react-icons/hi';
 import './menu.scss';
 
 const Menu = () => {
-  const [activeMenu, setActiveMenu] = useState('Каталог');
+  // const [activeMenu, setActiveMenu] = useState('Каталог');
+  const { items } = useSelector((state) => state.cart);
+  const totalCount = items.reduce((sum, item) => sum + item.count, 0);
 
   const menuData = [
     { name: 'Каталог', icon: <HiViewList className="menu__icon" />, route: '/' },
-    { name: 'Корзина', icon: <HiShoppingCart className="menu__icon" />, route: '/cart' },
+    {
+      name: 'Корзина',
+      icon: <HiShoppingCart className="menu__icon" />,
+      route: '/cart',
+      products: totalCount,
+    },
     { name: 'Профиль', icon: <HiUser className="menu__icon" />, route: '/profile' },
   ];
 
@@ -17,7 +24,7 @@ const Menu = () => {
   // };
   // onClick={() => onChangeMenu(name)}
 
-  const menu = menuData.map(({ name, icon, route }, i) => {
+  const menu = menuData.map(({ name, icon, route, products }, i) => {
     return (
       <li key={i} className="menu__item">
         <NavLink
@@ -30,6 +37,7 @@ const Menu = () => {
           className="menu__link">
           {icon}
           <span className="menu__text">{name}</span>
+          {products > 0 ? <span className="menu__products">{products}</span> : ''}
         </NavLink>
       </li>
     );

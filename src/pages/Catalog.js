@@ -1,10 +1,14 @@
 import { useState, useEffect, useContext } from 'react';
 import { HiViewGrid, HiViewList } from 'react-icons/hi';
+import axios from 'axios';
 import Card from '../components/card/Card';
 import Sort from '../components/sort/Sort';
 import Filters from '../components/filters/Filters';
 import Skeleton from '../components/Skeleton/Skeleton';
 import { SearchContext } from '../app/App';
+
+import { useSelector, useDispatch } from 'react-redux';
+import { setCheckboxValue, setCurrentPage } from '../redux/slices/filterSlice';
 
 import Pagination from '../components/pagination/Pagination';
 
@@ -13,26 +17,49 @@ import './catalog.scss';
 const Catalog = () => {
   const [phones, setPhones] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [sort, setSort] = useState({ name: 'Сначала популярные', sortProperty: 'id&order=asc' });
-  const [checkboxValue, setCheckboxValue] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1); // т/к бэк не отдает массив телефонов и мы не можем на пагинации посчитать сколько будет страниц, придется кол-во страниц захардкодить
+  // const [sort, setSort] = useState({ name: 'Сначала популярные', sortProperty: 'id&order=asc' });
+  // const [checkboxValue, setCheckboxValue] = useState([]);
+  const checkboxValue = useSelector((state) => state.filter.checkboxValue);
+  const sort = useSelector((state) => state.filter.sort);
+  const currentPage = useSelector((state) => state.filter.currentPage);
+  // const sort = useSelector((state) => state.filter.sort);
+  const dispatch = useDispatch();
+
+  // const [currentPage, setCurrentPage] = useState(1); // т/к бэк не отдает массив телефонов и мы не можем на пагинации посчитать сколько будет страниц, придется кол-во страниц захардкодить
   const { searchValue } = useContext(SearchContext);
 
-  const memoryFilter = checkboxValue > 0 ? `&memoryId=${checkboxValue}` : '';
-  const search = searchValue ? `&search=${searchValue}` : '';
+  const onChangeCategory = (i) => {
+    dispatch(setCheckboxValue(i));
+  };
 
-  console.log(checkboxValue);
+  const onChangePage = (number) => {
+    dispatch(setCurrentPage(number));
+  };
 
   useEffect(() => {
     setLoading(true);
-    fetch(
-      `https://652e6d590b8d8ddac0b15c7e.mockapi.io/phones?page=${currentPage}&limit=8&${memoryFilter}&sortBy=${sort.sortProperty}${search}`,
-    ).then((res) =>
-      res.json().then((arr) => {
-        setPhones(arr);
+
+    const memoryFilter = checkboxValue > 0 ? `&memoryId=${checkboxValue}` : '';
+    const search = searchValue ? `&search=${searchValue}` : '';
+    console.log(checkboxValue);
+
+    // fetch(
+    //   `https://652e6d590b8d8ddac0b15c7e.mockapi.io/phones?page=${currentPage}&limit=8&${memoryFilter}&sortBy=${sort.sortProperty}${search}`,
+    // ).then((res) =>
+    //   res.json().then((arr) => {
+    //     setPhones(arr);
+    //     setLoading(false);
+    //   }),
+    // );
+    axios
+      .get(
+        `https://652e6d590b8d8ddac0b15c7e.mockapi.io/phones?page=${currentPage}&limit=8&${memoryFilter}&sortBy=${sort.sortProperty}${search}`,
+      )
+      .then((res) => {
+        setPhones(res.data);
         setLoading(false);
-      }),
-    );
+      });
+
     window.scrollTo(0, 0);
   }, [checkboxValue, sort, searchValue, currentPage]);
 
@@ -46,7 +73,7 @@ const Catalog = () => {
         <div className="catalog__subtitle">Каталог</div>
         <h2 className="catalog__title">Смартфоны</h2>
         <div className="catalog__header">
-          <Sort sort={sort} onClickSort={(i) => setSort(i)} />
+          <Sort />
           <div className="catalog__grid">
             <HiViewGrid className="catalog__grid-icon active-grid" />
             <HiViewList className="catalog__grid-icon" />
@@ -54,26 +81,23 @@ const Catalog = () => {
         </div>
         <div className="catalog__content">
           <div className="catalog__filters">
-            <Filters checkboxValue={checkboxValue} onClickCheckbox={(i) => setCheckboxValue(i)} />
+            <Filters checkboxValue={checkboxValue} onChangeCategory={onChangeCategory} />
           </div>
           <div className="catalog__carts">
             <ul className="catalog__list">
               {loading
                 ? [...new Array(8)].map((_, i) => <Skeleton key={i} />)
                 : phones.map((items) => {
-                    const { id, ...itemsProps } = items;
+                    // const { id, ...itemsProps } = items;
                     return (
-                      <li key={id} className="catalog__list-item">
+                      <li key={items.id} className="catalog__list-item">
                         <Card {...items} />
                       </li>
                     );
                   })}
             </ul>
             <div className="catalog__pagination">
-              <Pagination
-                currentPage={currentPage}
-                onChangePage={(number) => setCurrentPage(number)}
-              />
+              <Pagination currentPage={currentPage} onChangePage={onChangePage} />
             </div>
           </div>
         </div>

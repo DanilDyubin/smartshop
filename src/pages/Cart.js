@@ -1,8 +1,28 @@
+import { useDispatch, useSelector } from 'react-redux';
 import CartItem from '../components/cartItem/CartItem';
+import { clearItems } from '../redux/slices/cartSlice';
 import { Link } from 'react-router-dom';
+import CartEmpty from '../components/cartEmpty/CartEmpty';
+import { HiOutlineTrash } from 'react-icons/hi';
+
 import './cart.scss';
 
 const Cart = () => {
+  const dispatch = useDispatch();
+  const { totalPrice, items } = useSelector((state) => state.cart);
+
+  const totalCount = items.reduce((sum, item) => sum + item.count, 0);
+
+  const onClickClear = () => {
+    if (window.confirm('Очистить корзину?')) {
+      dispatch(clearItems());
+    }
+  };
+
+  if (!totalPrice) {
+    return <CartEmpty />;
+  }
+
   return (
     <section className="cart">
       <div className="container cart__container">
@@ -15,16 +35,18 @@ const Cart = () => {
         <h2 className="cart__title title">Корзина</h2>
         <div className="cart__content">
           <div className="cart__left">
+            <div className="cart__left-header" onClick={onClickClear}>
+              <div className="cart__left-subtitle">Очистить корзину</div>
+              <HiOutlineTrash style={{ fontSize: '18px' }} />
+            </div>
             <ul className="cart__list list-reset">
-              <li className="cart__list-item">
-                <CartItem />
-              </li>
-              <li className="cart__list-item">
-                <CartItem />
-              </li>
-              <li className="cart__list-item">
-                <CartItem />
-              </li>
+              {items.map((item) => {
+                return (
+                  <li className="cart__list-item" key={item.id}>
+                    <CartItem {...item} />
+                  </li>
+                );
+              })}
             </ul>
           </div>
           <div className="cart__right">
@@ -47,9 +69,9 @@ const Cart = () => {
               <button className="cart__btn">Apply</button>
             </div>
             <div className="cart__right-wrapper">
-              <p className="cart__right-text">3 товара</p>
+              <p className="cart__right-text">Количество</p>
               <div className="cart__right-dashed"></div>
-              <p className="cart__right-text">219 000 ₽</p>
+              <p className="cart__right-text">{totalCount}</p>
             </div>
             <div className="cart__right-wrapper">
               <p className="cart__right-text cart__right-text--gray">Скидка по акции</p>
@@ -62,7 +84,7 @@ const Cart = () => {
             <div className="cart__right-wrapper">
               <p className="cart__right-text">Итого</p>
               <div className="cart__right-dashed"></div>
-              <p className="cart__right-text">219 000 ₽</p>
+              <p className="cart__right-text">{totalPrice} ₽</p>
             </div>
             <button className="cart__right-btn--checkout">Перейти к оформлению</button>
           </div>
@@ -70,5 +92,9 @@ const Cart = () => {
       </div>
     </section>
   );
+};
+
+const View = () => {
+  return <></>;
 };
 export default Cart;

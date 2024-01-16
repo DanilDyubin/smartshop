@@ -8,20 +8,20 @@ const ram = ['12 ГБ', '8 ГБ', '6 ГБ', '4 ГБ'];
 const brand = ['Apple', 'Samsung', 'Xiaomi', 'Honor'];
 const camera = ['64 МП', '50 МП', '48 МП', '12 МП'];
 
-const Filters = ({ checkboxValue, onClickCheckbox }) => {
-  //   const [value, setValue] = useState([]);
+const Filters = ({ checkboxValue, onChangeCategory }) => {
+  const [value, setValue] = useState([]);
 
-  //   useEffect(() => {
-  //     onClickCheckbox(value);
-  //   }, [value]);
+  useEffect(() => {
+    onChangeCategory(value);
+  }, [value]);
 
   const handleChange = (event) => {
     const { value, checked } = event.target; // получаем инпут на который кликнули и состояние checked (on)
     console.log(value, checked);
     if (checked) {
-      onClickCheckbox((prev) => [...prev, value]); // в массив к предыдущему value добавляем новое
+      setValue((prev) => [...prev, value]); // в массив к предыдущему value добавляем новое
     } else {
-      onClickCheckbox((prev) => {
+      setValue((prev) => {
         return [...prev.filter((filters) => filters !== value)];
       });
     }
@@ -52,7 +52,7 @@ const Filters = ({ checkboxValue, onClickCheckbox }) => {
         <div className="filters__caption">Встроенная память</div>
         <FiltersList filters={memory} handleChange={handleChange} />
       </div>
-      {/* <div className="filters__block">
+      <div className="filters__block">
         <div className="filters__caption">Оперативная память</div>
         <FiltersList filters={ram} />
       </div>
@@ -63,7 +63,7 @@ const Filters = ({ checkboxValue, onClickCheckbox }) => {
       <div className="filters__block">
         <div className="filters__caption">Основная камера</div>
         <FiltersList filters={camera} />
-      </div> */}
+      </div>
     </section>
   );
 };

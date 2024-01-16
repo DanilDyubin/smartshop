@@ -1,28 +1,45 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
+
+import { useSelector, useDispatch } from 'react-redux';
+import { setSort } from '../../redux/slices/filterSlice';
+
 import { HiOutlineSwitchVertical } from 'react-icons/hi';
 import './sort.scss';
 
-const Sort = ({ sort, onClickSort }) => {
+const Sort = () => {
   const [open, setOpen] = useState(false);
-  //   const [select, setSelect] = useState('Сначала популярные');
+  const sort = useSelector((state) => state.filter.sort);
+  const dispatch = useDispatch();
+  const sortRef = useRef();
 
-  //   const filters = ['Сначала популярные', 'Сначала дешевые', 'Сначала дорогие', 'По названию'];
   const filters = [
     { name: 'Сначала популярные', sortProperty: 'id&order=asc' },
     { name: 'Сначала дешевые', sortProperty: 'price&order=asc' },
     { name: 'Сначала дорогие', sortProperty: 'price&order=desc' },
     { name: 'По названию', sortProperty: 'brand&order=asc' },
   ];
-  //   sortBy=memory&order=desc
 
-  const onFiltersSelect = (i) => {
-    // setSelect(name);
-    onClickSort(i);
+  const onFiltersSelect = (obj) => {
+    dispatch(setSort(obj));
     setOpen(false);
   };
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (!event.composedPath().includes(sortRef.current)) {
+        setOpen(false);
+      }
+    };
+
+    document.body.addEventListener('click', handleClickOutside);
+
+    return () => {
+      document.body.removeEventListener('click', handleClickOutside);
+    };
+  }, []);
+
   return (
-    <div className="sort">
+    <div className="sort" ref={sortRef}>
       <div className="sort__wrapper" onClick={() => setOpen(!open)}>
         <HiOutlineSwitchVertical />
         <span>{sort.name}</span>

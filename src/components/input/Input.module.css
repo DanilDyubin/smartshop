@@ -3,13 +3,14 @@
   padding-right: 16px;
   display: flex;
   align-items: center;
+  gap: 16px;
   flex-grow: 1;
   height: 40px;
   border-radius: 8px;
   background-color: #dedede;
 }
 
-.btn {
+/* .btn {
   margin-right: 16px;
   border: none;
   padding: 0;
@@ -17,7 +18,7 @@
   cursor: pointer;
   width: 18px;
   height: 18px;
-}
+} */
 
 .input {
   display: flex;
@@ -29,6 +30,11 @@
   outline: none;
 }
 
-.icon {
+.search {
   font-size: 20px;
+}
+
+.clear {
+  font-size: 20px;
+  cursor: pointer;
 }
