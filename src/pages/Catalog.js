@@ -24,6 +24,7 @@ const Catalog = () => {
   const currentPage = useSelector((state) => state.filter.currentPage);
   // const sort = useSelector((state) => state.filter.sort);
   const dispatch = useDispatch();
+  console.log(phones);
 
   // const [currentPage, setCurrentPage] = useState(1); // т/к бэк не отдает массив телефонов и мы не можем на пагинации посчитать сколько будет страниц, придется кол-во страниц захардкодить
   const { searchValue } = useContext(SearchContext);
@@ -36,12 +37,11 @@ const Catalog = () => {
     dispatch(setCurrentPage(number));
   };
 
-  useEffect(() => {
+  const getPhones = async () => {
     setLoading(true);
 
     const memoryFilter = checkboxValue > 0 ? `&memoryId=${checkboxValue}` : '';
     const search = searchValue ? `&search=${searchValue}` : '';
-    console.log(checkboxValue);
 
     // fetch(
     //   `https://652e6d590b8d8ddac0b15c7e.mockapi.io/phones?page=${currentPage}&limit=8&${memoryFilter}&sortBy=${sort.sortProperty}${search}`,
@@ -51,7 +51,7 @@ const Catalog = () => {
     //     setLoading(false);
     //   }),
     // );
-    axios
+    await axios
       .get(
         `https://652e6d590b8d8ddac0b15c7e.mockapi.io/phones?page=${currentPage}&limit=8&${memoryFilter}&sortBy=${sort.sortProperty}${search}`,
       )
@@ -59,6 +59,10 @@ const Catalog = () => {
         setPhones(res.data);
         setLoading(false);
       });
+  };
+
+  useEffect(() => {
+    getPhones();
 
     window.scrollTo(0, 0);
   }, [checkboxValue, sort, searchValue, currentPage]);
